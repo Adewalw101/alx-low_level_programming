@@ -2,7 +2,7 @@
 /**
  * _isalpha - this is a program to print out alphabets
  * @c: character
- * return: 1 if c is a letter, lowercase or uppercase Returns 0 otherwise
+ * return: 1 if c is a letter, lowercase or uppercase 0 otherwise
  */
 int _isalpha(int c)
 {
