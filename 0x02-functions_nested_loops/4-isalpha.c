@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * _isalpha - this is a program to print out alphabets
- * @c: character
- * return: 1 if c is a letter, lowercase or uppercase, or 0 otherwise
+ *_isalpha - this is a program to print out alphabets
+ *@c: character
+ *return: 1 if c is a letter, lowercase or uppercase, or 0 otherwise
  */
 int _isalpha(int c)
 {
