@@ -2,39 +2,37 @@
 #include <stdlib.h>
 
 /**
- * argstostr - concatenates all the arguments of your program.
- * @ac: number of arguments
- * @av: double pointer to arguments
- *
- * Return:pointer to new string, or NULL if error
+ * _realloc - reallocates a memory block using malloc and free.
+ * @ptr: pointer to previously allocated memory
+ * @old_size: size of allocated space for ptr
+ * @new_size: size of newly allocated space
+ * Return: pointer to newly allocated memory, or NULL if failure
  */
-char *argstostr(int ac, char **av)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	int i, j, k = 0, n = 0;
-	char *s;
+	char *p;
+	unsigned int i, max = new_size;
+	char *oldp = ptr;
 
-	if (ac <= 0 || av == NULL)
-		return (NULL);
-	for (i = 0; i < ac; i++)
+	if (ptr == NULL)
 	{
-		for (j = 0; av[i][j]; j++)
-			n++;
-		n++;
+		p = malloc(new_size);
 	}
-	n++;
-	s = malloc(n * sizeof(char));
-	if (s == NULL)
-		return (NULL);
-	for (i = 0; i < ac; i++)
+	else if (new_size == 0)
 	{
-		for (j = 0; av[i][j]; j++)
-		{
-			s[k] = av[i][j];
-			k++;
-		}
-		s[k] = '\n';
-		k++;
+		free(ptr);
+		return (NULL);
 	}
-	s[k] = '\0';
-	return (s);
+	else if (new_size == old_size)
+		return (ptr);
+
+	p = malloc(new_size);
+	if (p == NULL)
+		return (NULL);
+	if (new_size > old_size)
+		max = old_size;
+	for (i = 0; i < max; i++)
+		p[i] = oldp[i];
+	free(ptr);
+	return (p);
 }
